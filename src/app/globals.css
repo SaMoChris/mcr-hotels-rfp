@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+/* Verisave brand tokens (see the brand kit): orange mark, dark ink, quiet grays. */
+@theme {
+  --color-night: #0f1115;
+  --color-ink: #1a1a1a;
+  --color-graphite: #4d4d4f;
+  --color-mute: #6b7280;
+  --color-paper: #f9fafb;
+  --color-line: #e5e7eb;
+  --color-orange: #ff853c;
+  --color-ember: #d84315;
+  --color-ember-hover: #e64a19;
+  --color-rust: #b85400;
+  --color-tint: #fff4ea;
+  --color-good: #17694a;
+  --color-bad: #b3261e;
+
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Variable", "Instrument Sans Variable", ui-sans-serif, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Archivo at its widest: the brand's display voice. */
+.display {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.btn-primary {
+  background: var(--color-ember);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-ember-hover);
+}
+.btn-quiet {
+  border: 1px solid var(--color-line);
+  background: #fff;
+  color: var(--color-ink);
+}
+.btn-quiet:hover:not(:disabled) {
+  border-color: var(--color-graphite);
+}
+.btn-small {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+}
+.link {
+  color: var(--color-rust);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+/* Plain form fields */
+.field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: #fff;
+  padding: 0.45rem 0.65rem;
+}
+.field:hover {
+  border-color: #c9cdd3;
+}
+
+/* An editable number in the model: tinted so inputs stand apart from results. */
+.cell {
+  width: 6.5rem;
+  border: 0;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--color-orange) 65%, transparent);
+  border-radius: 3px 3px 0 0;
+  background: var(--color-tint);
+  padding: 0.25rem 0.45rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.cell[data-changed="true"] {
+  font-weight: 650;
+  border-bottom-color: var(--color-ember);
+}
+.cell[data-invalid="true"] {
+  border-bottom-color: var(--color-bad);
+  background: #fdeceb;
+}
+
+/* Data tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+.table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-mute);
+  font-size: 0.82rem;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--color-ink);
+  vertical-align: bottom;
+}
+.table td {
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: middle;
+}
+.table th.r,
+.table td.r {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.table tr.sum td {
+  font-weight: 650;
+  border-bottom: 0;
+  border-top: 1px solid var(--color-ink);
+}
+.table tr.group td {
+  padding-top: 1.4rem;
+  font-weight: 650;
+  border-bottom: 1px solid var(--color-ink);
+}
+
+/* Rendered Markdown (proposal, scope, RFP) */
+.prose {
+  max-width: 78ch;
+}
+.prose.wide {
+  max-width: none;
+}
+.prose > * + * {
+  margin-top: 0.85rem;
+}
+.prose h2 {
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-top: 2.2rem;
+}
+.prose h3 {
+  font-weight: 650;
+  font-size: 1.05rem;
+  margin-top: 1.8rem;
+}
+.prose p,
+.prose li {
+  max-width: 78ch;
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+.prose li + li {
+  margin-top: 0.35rem;
+}
+.prose a {
+  color: var(--color-rust);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose strong {
+  font-weight: 650;
+}
+.prose .table-wrap {
+  overflow-x: auto;
+}
+.prose table {
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 34rem;
+}
+.prose th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-mute);
+  font-size: 0.82rem;
+  border-bottom: 1px solid var(--color-ink);
+  padding: 0.45rem 0.9rem 0.45rem 0;
+  vertical-align: bottom;
+}
+.prose td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.5rem 0.9rem 0.5rem 0;
+  vertical-align: top;
+}
+.prose td:first-child {
+  white-space: nowrap;
+}
+.prose td:first-child:has(+ td + td + td) {
+  white-space: normal;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
