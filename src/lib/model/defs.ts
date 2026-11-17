@@ -62,10 +62,10 @@ const items: ItemDef[] = [
 
 export const MODEL_DEFS: ModelDefs = {
   roles: [
-    { id: "lead", name: "Engagement lead", staffedBy: "Kent Low", rate: 300 },
-    { id: "pm", name: "Program manager", staffedBy: "Genia Pruitt", rate: 225 },
+    { id: "lead", name: "Engagement lead", staffedBy: "Genia Pruitt and Chris Lapierre", rate: 300 },
+    { id: "pm", name: "Program manager", staffedBy: "Elena Crespo", rate: 225 },
     { id: "analyst", name: "Analyst", staffedBy: "Brandon Ayers and analysis team", rate: 175 },
-    { id: "exec", name: "Executive and commercial", staffedBy: "Chris Lapierre; CEO as executive sponsor", rate: 350 },
+    { id: "exec", name: "Executive sponsor", staffedBy: "Chris Lefebvre and Jeremy Layton", rate: 350 },
   ],
   phases: [
     {
